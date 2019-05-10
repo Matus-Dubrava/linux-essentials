@@ -1,0 +1,6 @@
+something
+The Republic of Plato, by Plato
+Tusculan Disputations, by Marcus Tullius Cicero
+
+  lines  words  document  
+  5  16 ancient_titles.txt

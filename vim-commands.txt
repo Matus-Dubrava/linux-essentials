@@ -1,0 +1,14 @@
+press i to enter INSERT mode
+press esc to leave INSERT mode
+press o to enter line below the cursor
+press v to enter view mode and to highlight some text,
+   then press y to confirm the selection,
+   then press p key to copy the selection at a cursor's position
+   press u to undo the paste 
+press : to enter exit mode
+	type w to write file (add space and name the file)
+press shift+g to move cursor to the bottom of the file
+press dw to delete word under the cursor 
+press dd to delete the whole line under the cursor
+press gg to go to the top of the file
+press shift+a to append text to the end of the line
