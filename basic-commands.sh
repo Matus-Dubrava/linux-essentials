@@ -354,3 +354,157 @@ lsblk
 # view free space on a disk
 df
 df -h # show output in human readable format
+
+#-------------------------------------------------------------------
+# processes 
+#-------------------------------------------------------------------
+
+# show processes 
+ps # this will just show processes running in a current bash 
+ps -u <username> # show processes that are running under current user 
+ps -e # show all the running processes
+ps -H # show hierarchy of processes via indentation -- ps -eH
+ps -f # show full command listing with arguments passed to it -- ps -eHf
+
+# this information is taken from /proc
+
+# most of the log files are stored in
+/var/log
+
+#-------------------------------------------------------------------
+# networking 
+#-------------------------------------------------------------------
+
+# show your IP address configuration
+ifcondig
+ip addr show
+
+# show IP of gateway
+ip route show
+route
+netstat -r
+
+# ip address of DNS server that the server should use
+car /etc/resolv.conf
+
+# show ip addresses of servers hosting a domain
+host <domain-name>
+
+# to run the above command, we need to install DNS utilities
+# aptitude
+apt-get install dnsutils -y
+# yum
+yum install bind-utils -y
+
+# verify that a server is responding
+ping <host/ip>
+
+# local name resolution file for loopback and small networks
+cat /etc/hosts
+
+#-------------------------------------------------------------------
+# users 
+#-------------------------------------------------------------------
+
+# show logged in users
+who
+# the same as above but with more information
+w
+
+# view user and group ID of a specified user
+id
+
+# show sudo users configuration
+cat /etc/sudoers
+
+# primary config file of all users on the system
+cat /etc/passwd
+
+# primary config gile for all groups on the system
+cat /etc/group
+
+# add a new group
+sudo groupadd <group-name>
+
+# we can get id of a newly created group from
+sudo cat /etc/group
+
+# create new user
+sudo useradd -G <secondary-group-id> -m -c "full user name" <login-name> -s "/bin/bash"
+# -m will create default home directory for a user
+# -s default bash
+
+# change user's attribute
+usermod # followed by flag of the attribute that we want to change
+
+# verify that user has been successfully created
+id <login-name>
+
+# set password for a user 
+sudo passwd <username>
+
+# default behavior for useradd command 
+cat /etc/default/useradd
+
+# contents of this folder are automatically copied to home directory 
+# of a new user
+cat /etc/skel
+
+# primary config file for all encrypted passwords for users on the system
+sudo cat /etc/shadow
+
+# login as a user
+login <username>
+
+# show who and when logged in
+last
+
+#-------------------------------------------------------------------
+# file and directory permissions 
+#-------------------------------------------------------------------
+
+# show permissions 
+ls -l
+
+# change permissions
+chmod 
+
+# u - user
+# g - group
+# o - others
+
+# remove read permissions from a file for others
+chmod o-r <filename>
+# add read permissions to a file for others
+chmod o+r <filename> 
+# remove read permissions from every file in a directory for others
+chmod -R o-r <dicrectory>/*
+
+# change ownership of a file
+chown
+
+# change group ownership of a file to 
+chown :<groupname> <filename>
+chgrp <groupname> <filename>
+
+# sitckky bit
+# permissions that allows users to delete only their own files 
+# applied to directory
+chmod 1xxx <dir> # ex. chmod 1777 /Documents
+chmod o+t <dir> # same as above
+chmod 0xxx <dir> # to remove the sticky bit
+chmod o-t <dir> # same as above
+
+#-------------------------------------------------------------------
+# file links
+#-------------------------------------------------------------------
+
+# create link
+ln 
+
+# create symbolic link
+ln -s <sourcefile> <linkfile>
+ln -s /Documents/file.txt /file.txt.lnk
+
+# remove symbolic link
+unlink <linkfile>
